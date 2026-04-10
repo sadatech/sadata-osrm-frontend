@@ -7,8 +7,9 @@
     "test": "jest",
     "test:lint": "eslint src/*.js i18n/*.js",
     "replace": "node ./scripts/replace.js",
-    "compile": "browserify -d src/index.js -s osrm > bundle.raw.js && uglifyjs bundle.raw.js -c -m --source-map filename=bundle.js.map -o bundle.js",
-    "build": "npm run replace && npm run compile && cp node_modules/leaflet/dist/leaflet.css css/leaflet.css",
+    "compile": "browserify -d src/index.js -s osrm > bundle.raw.js && uglifyjs bundle.raw.js --compress --mangle --source-map filename=bundle.js.map -o bundle.js",
+    "esbuild": "esbuild bundle.js --bundle --allow-overwrite --minify --minify-syntax --tree-shaking=true --format=iife --platform=browser --legal-comments=none --charset=utf8 --drop:debugger --drop:console --ignore-annotations --log-level=error --outfile=bundle.min.js",
+    "build": "npm run replace && npm run compile && npm run esbuild && cp node_modules/leaflet/dist/leaflet.css css/leaflet.css",
     "start-index": "budo src/index.js --port=9966 --serve=bundle.js --live -d | bistre",
     "start-index-prod": "budo src/index.js --port=9966 --serve=bundle.js -d | bistre",
     "start": "npm run build && npm run start-index",
@@ -43,6 +44,7 @@
     "uglify-js": "^3.19.3"
   },
   "dependencies": {
+    "esbuild": "^0.28.0",
     "file-saver": "^2.0.5",
     "jsonp": "^0.2.1",
     "leaflet": "~1.9.4",
