@@ -43,9 +43,8 @@ if (require.main === module) {
   const leafletOptions = path.join(__dirname, '..', 'src', 'leaflet_options.js')
   // const debug = path.join(__dirname, '..', 'debug', 'index.html')
   // disable debug
-  const debug = ""
 
-  for (const filepath of [leafletOptions, debug]) {
+  for (const filepath of [leafletOptions]) {
     const content = fs.readFileSync(filepath, 'utf8')
     fs.writeFileSync(filepath, applyReplacements(content, process.env))
   }
