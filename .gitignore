@@ -1,5 +1,7 @@
 package-lock.json
 node_modules/
 *.swp
+css/leaflet.css
+bundle*
 bundle*raw*
 bundle*map
