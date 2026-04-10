@@ -41,7 +41,9 @@ function applyReplacements(content, env) {
 // Only run file I/O when executed directly as a script
 if (require.main === module) {
   const leafletOptions = path.join(__dirname, '..', 'src', 'leaflet_options.js')
-  const debug = path.join(__dirname, '..', 'debug', 'index.html')
+  // const debug = path.join(__dirname, '..', 'debug', 'index.html')
+  // disable debug
+  const debug = ""
 
   for (const filepath of [leafletOptions, debug]) {
     const content = fs.readFileSync(filepath, 'utf8')

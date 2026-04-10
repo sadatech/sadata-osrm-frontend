@@ -86,7 +86,7 @@ var Control = L.Control.extend({
     var position = this._map.getCenter(),
       zoom = this._map.getZoom(),
       prec = 6;
-    window.open("debug/#" + zoom + "/" + position.lat.toFixed(prec) + "/" + position.lng.toFixed(prec));
+    // window.open("debug/#" + zoom + "/" + position.lat.toFixed(prec) + "/" + position.lng.toFixed(prec));
   },
 
   _openMapillary: function() {
