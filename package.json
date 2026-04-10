@@ -7,7 +7,7 @@
     "test": "jest",
     "test:lint": "eslint src/*.js i18n/*.js",
     "replace": "node ./scripts/replace.js",
-    "compile": "browserify -d src/index.js -s smap > bundle.raw.js && uglifyjs bundle.raw.js --compress --mangle --source-map filename=bundle.js.map -o bundle.js",
+    "compile": "browserify -d src/index.js -s osrm > bundle.raw.js && uglifyjs bundle.raw.js --compress --mangle --source-map filename=bundle.js.map -o bundle.js",
     "esbuild": "esbuild bundle.js --bundle --allow-overwrite --minify --minify-syntax --tree-shaking=true --format=iife --platform=browser --legal-comments=none --charset=utf8 --drop:debugger --drop:console --ignore-annotations --log-level=error --outfile=bundle.esbuild.js --sourcemap=external",
     "obfuscate": "javascript-obfuscator bundle.esbuild.js --output bundle.min.js --compact true --control-flow-flattening true --dead-code-injection true --debug-protection true --disable-console-output true --identifier-names-generator hexadecimal --numbers-to-expressions true --self-defending true --string-array true --string-array-encoding base64 --string-array-wrappers-count 2 --string-array-wrappers-chained-calls true --string-array-wrappers-type function --unicode-escape-sequence true",
     "clear": "rm -rf bundle.js bundle.js.map bundle.raw.js bundle.esbuild.js bundle.esbuild.js.map bundle.min.js.map",
