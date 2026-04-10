@@ -159,7 +159,7 @@ var controlOptions = {
 };
 // translate profile names
 for (var profile = 0, len = controlOptions.services.length; profile < len; profile++)
-{
+  {
   controlOptions.services[profile].label = localization.t(language, controlOptions.services[profile].label) || controlOptions.services[profile].label;
 }
 
@@ -168,7 +168,7 @@ router._convertRouteOriginal = router._convertRoute;
 router._convertRoute = function(responseRoute) {
   // monkey-patch L.Routing.OSRMv1 until it's easier to overwrite with a hook
   var resp = this._convertRouteOriginal(responseRoute);
-
+  
   if (resp.instructions && resp.instructions.length) {
     var i = 0;
     responseRoute.legs.forEach(function(leg) {
@@ -180,7 +180,7 @@ router._convertRoute = function(responseRoute) {
       });
     });
   };
-
+  
   return resp;
 };
 var lrmControl = L.Routing.control(Object.assign(controlOptions, {
@@ -257,29 +257,43 @@ lrmControl.on('routeselected', function(e) {
 });
 plan.on('waypointschanged', function(e) {
   if (!e.waypoints ||
-      e.waypoints.filter(function(wp) { return !wp.latLng; }).length > 0) {
-    toolsControl.setRouteGeoJSON(null);
-  }
-});
+    e.waypoints.filter(function(wp) { return !wp.latLng; }).length > 0) {
+      toolsControl.setRouteGeoJSON(null);
+    }
+  });
+  
+  locate.locate({
+    follow: false,
+    setView: true,
+    remainActive: false,
+    keepCurrentZoomLevel: true,
+    stopFollowingOnDrag: false,
+    onLocationError: function(err) {
+      alert(err.message)
+    },
+    onLocationOutsideMapBounds: function(context) {
+      alert(context.options.strings.outsideMapBoundsMsg);
+    },
+    showPopup: false,
+    locateOptions: {}
+  }).addTo(map);
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    /**
+     * @description Collapse the routing container by default to provide a cleaner UI and more map space for users to interact with.
+     */
+    var routingContainer = document.querySelector('.leaflet-routing-container')
+    if (routingContainer) routingContainer.querySelector('.leaflet-routing-collapse-btn').click()
+      
+    /**
+    * @description Remove the reverse waypoints button from the UI, as it is not needed in this demo and can cause confusion for users.
+    */
+    var reverseBtn = document.querySelector('.leaflet-routing-reverse-waypoints');
+    if (reverseBtn) reverseBtn.remove();
 
-locate.locate({
-  follow: false,
-  setView: true,
-  remainActive: false,
-  keepCurrentZoomLevel: true,
-  stopFollowingOnDrag: false,
-  onLocationError: function(err) {
-    alert(err.message)
-  },
-  onLocationOutsideMapBounds: function(context) {
-    alert(context.options.strings.outsideMapBoundsMsg);
-  },
-  showPopup: false,
-  locateOptions: {}
-}).addTo(map);
-
-document.addEventListener('DOMContentLoaded', function () {
-  var routingContainer = document.querySelector('.leaflet-routing-container')
-  if (routingContainer) routingContainer.querySelector('.leaflet-routing-collapse-btn').click()
-  const toolsContainer = document.querySelector('.leaflet-osrm-tools-container');
-})
+    /**
+     * @description Remove the add waypoint button from the UI, as it is not needed in this demo and can cause confusion for users.
+     */
+    var addBtn = document.querySelector('.leaflet-routing-add-waypoint');
+    if (addBtn) addBtn.remove();
+  })

@@ -933,3 +933,15 @@ td.distance {
   pointer-events: none;
   background-color: #eee;
 }
+
+.leaflet-routing-remove-waypoint {
+    display: none !important;
+}
+
+.leaflet-routing-add-waypoint {
+    display: none !important;
+}
+
+.leaflet-routing-reverse-waypoints {
+    display: none !important;
+}
