@@ -4,17 +4,12 @@
     <meta charset="utf-8" />
     <title>SADATA | SMAP SERVICE</title>
     <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0'>
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel='stylesheet' href="css/leaflet.css" />
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link href='css/site.css' rel='stylesheet' />
+    <link rel="shortcut icon" href="https://cdn.sadata.id/logo-sadata.png" />
+    <link rel='stylesheet' href="./css/leaflet.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link href='./css/site.css' rel='stylesheet' />
     <style>
       .leaflet-osrm-tools-container
-      {
-        display: none !important;
-      }
-
-      .leaflet-control-attribution
       {
         display: none !important;
       }
@@ -23,19 +18,22 @@
       {
         display: none !important;
       }
+
+      .leaflet-routing-geocoder input {
+        pointer-events: none;
+        background-color: #eee;
+      }
     </style>
   </head>
   <body>
     <div id='map' class='map'></div>
-    <script type="text/javascript" src='bundle.js'></script>
+    <script type="text/javascript" src='./bundle.js'></script>
     <script type="text/javascript">
-      // On page load
       document.addEventListener('DOMContentLoaded', function () {
-        // Hide leaflet-routing-container
-        var routingContainer = document.querySelector('.leaflet-routing-container');
-        if (routingContainer) {
-          routingContainer.style.display = 'none';
-        }
+        var routingContainer = document.querySelector('.leaflet-routing-container')
+        if (routingContainer) routingContainer.querySelector('.leaflet-routing-collapse-btn').click()
+
+        const toolsContainer = document.querySelector('.leaflet-osrm-tools-container');
       })
     </script>
   </body>

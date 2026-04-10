@@ -34,8 +34,10 @@ var map = L.map('map', {
   zoomControl: true,
   dragging: true,
   layers: layers,
+  attributionControl: false,
   maxZoom: 18
 }).setView(mergedOptions.center, mergedOptions.zoom);
+L.control.attribution({ prefix: 'Hosted with &#128150; + Powered By <a href="//sadata.id">SADATA</a>' }).addTo(map);
 
 // Pass basemap layers
 mapLayer = mapLayer.reduce(function(title, layer) {
@@ -182,7 +184,11 @@ router._convertRoute = function(responseRoute) {
   return resp;
 };
 var lrmControl = L.Routing.control(Object.assign(controlOptions, {
-  router: router
+  router: router,
+  addWaypoints: false,
+  draggableWaypoints: true,
+  routeWhileDragging: true,
+  geocoder: null
 })).addTo(map);
 var toolsControl = tools.control(localization.get(mergedOptions.language), localization.getLanguages(), options.tools).addTo(map);
 var state = state(map, lrmControl, toolsControl, mergedOptions);

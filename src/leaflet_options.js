@@ -6,7 +6,7 @@
 let L = require('leaflet')
 
 let EdgeSMAP = L.tileLayer('https://edge-tiles.sadata.id/tile/{z}/{x}/{y}.png', {
-  attribution: 'Powered by <a href="https://www.openstreetmap.org/copyright">SADATA</a> - ' + '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors — ' + '<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>',
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors — ' + '<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>',
   maxZoom: 20
 })
 
