@@ -920,3 +920,7 @@ td.distance {
     margin-right: -400px !important;
     transition: 0.5s;
 }
+
+.leaflet-control-attribution {
+    display: none !important;
+}
