@@ -37,7 +37,7 @@ var map = L.map('map', {
   attributionControl: false,
   maxZoom: 18
 }).setView(mergedOptions.center, mergedOptions.zoom);
-L.control.attribution({ prefix: 'Hosted with &#128150; + Powered By <a href="//sadata.id">SADATA</a>' }).addTo(map);
+L.control.attribution({ prefix: 'Powered & Hosted with &#128150; by <a href="//sadata.id">SADATA</a>' }).addTo(map);
 
 // Pass basemap layers
 mapLayer = mapLayer.reduce(function(title, layer) {
