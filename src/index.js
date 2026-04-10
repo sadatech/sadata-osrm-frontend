@@ -277,3 +277,9 @@ locate.locate({
   showPopup: false,
   locateOptions: {}
 }).addTo(map);
+
+document.addEventListener('DOMContentLoaded', function () {
+  var routingContainer = document.querySelector('.leaflet-routing-container')
+  if (routingContainer) routingContainer.querySelector('.leaflet-routing-collapse-btn').click()
+  const toolsContainer = document.querySelector('.leaflet-osrm-tools-container');
+})

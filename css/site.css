@@ -920,3 +920,16 @@ td.distance {
     margin-right: -400px !important;
     transition: 0.5s;
 }
+
+.leaflet-osrm-tools-container {
+  display: none !important;
+}
+
+.leaflet-control-scale {
+  display: none !important;
+}
+
+.leaflet-routing-geocoder input {
+  pointer-events: none;
+  background-color: #eee;
+}

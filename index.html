@@ -8,33 +8,9 @@
     <link rel='stylesheet' href="./css/leaflet.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link href='./css/site.css' rel='stylesheet' />
-    <style>
-      .leaflet-osrm-tools-container
-      {
-        display: none !important;
-      }
-
-      .leaflet-control-scale
-      {
-        display: none !important;
-      }
-
-      .leaflet-routing-geocoder input {
-        pointer-events: none;
-        background-color: #eee;
-      }
-    </style>
   </head>
   <body>
     <div id='map' class='map'></div>
     <script type="text/javascript" src='./bundle.min.js'></script>
-    <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function () {
-        var routingContainer = document.querySelector('.leaflet-routing-container')
-        if (routingContainer) routingContainer.querySelector('.leaflet-routing-collapse-btn').click()
-
-        const toolsContainer = document.querySelector('.leaflet-osrm-tools-container');
-      })
-    </script>
   </body>
 </html>
