@@ -18,10 +18,25 @@
       {
         display: none !important;
       }
+
+      .leaflet-control-scale
+      {
+        display: none !important;
+      }
     </style>
   </head>
   <body>
     <div id='map' class='map'></div>
     <script type="text/javascript" src='bundle.js'></script>
+    <script type="text/javascript">
+      // On page load
+      document.addEventListener('DOMContentLoaded', function () {
+        // Hide leaflet-routing-container
+        var routingContainer = document.querySelector('.leaflet-routing-container');
+        if (routingContainer) {
+          routingContainer.style.display = 'none';
+        }
+      })
+    </script>
   </body>
 </html>
