@@ -186,7 +186,7 @@ router._convertRoute = function(responseRoute) {
 var lrmControl = L.Routing.control(Object.assign(controlOptions, {
   router: router,
   addWaypoints: false,
-  draggableWaypoints: true,
+  draggableWaypoints: false,
   routeWhileDragging: true,
   geocoder: null
 })).addTo(map);
