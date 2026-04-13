@@ -105,7 +105,7 @@ var plan = new ReversablePlan([], {
   routeWhileDragging: true,
   createMarker: function(i, wp, n) {
     var options = {
-      draggable: this.draggableWaypoints,
+      draggable: false,
       icon: makeIcon(i, n)
     };
     var marker = L.marker(wp.latLng, options);
